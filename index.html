@@ -30,6 +30,16 @@
             }
         }
 
+        /* New bounce animation for the "Open Now" text */
+        @keyframes bounce-text {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-3px);
+            }
+        }
+
         .action-button {
             transition: all 0.2s ease-in-out;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -44,6 +54,18 @@
         .action-button:active {
             transform: translateY(1px);
         }
+
+        /* Applying the bounce animation to the span inside the button */
+        .animate-text {
+            display: inline-block;
+            animation: bounce-text 2s infinite ease-in-out;
+        }
+
+        /* Delaying the animation for different spans for a wave effect */
+        .delay-1 { animation-delay: 0s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.4s; }
+
     </style>
 </head>
 <body>
@@ -54,16 +76,18 @@
             Study Bee
         </h1>
 
-        <!-- Call to Action Button wrapped in an anchor tag for redirection -->
+        <!-- 
+             Call to Action Button wrapped in an anchor tag for redirection 
+             Removed target="_blank" to open in the same tab
+             Removed rel="noopener noreferrer" as it's primarily for external blank links
+        -->
         <a href="https://studybeepro.site" 
-           target="_blank" 
-           rel="noopener noreferrer" 
            class="inline-block no-underline">
             
             <button class="action-button bg-[#111111] text-white font-bold py-3 px-8 rounded-xl text-lg md:text-xl flex items-center justify-center gap-2 mx-auto">
-                <span>🔥</span>
-                <span>Open Now</span>
-                <span>🔥</span>
+                <span class="animate-text delay-1">🔥</span>
+                <span class="animate-text delay-2">Open Now</span>
+                <span class="animate-text delay-3">🔥</span>
             </button>
             
         </a>
